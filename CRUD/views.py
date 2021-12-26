@@ -1,5 +1,3 @@
-import json
-
 from rest_framework.response import Response
 from .serializer import EmployeeSerializer
 from rest_framework.views import APIView
@@ -47,26 +45,7 @@ class TwoSumView(APIView):
 
 
 class SettlementLogicCreateApi(generics.CreateAPIView):
-    queryset = SettlementLogic.objects.all()
     serializer_class = EmployeeSerializer
-
-    def post(self, request, *args, **kwargs):
-        nums_start = json.loads(request.data.get('first_item'))
-        target_start = int(request.data.get('second_item'))
-        nums, target = nums_start, target_start
-        answer = []
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    answer.append([i, j])
-        result = {
-            'first_item': str(nums_start),
-            'second_item': str(target_start),
-            'result_item': str(answer[0])
-        }
-        sl = SettlementLogic.objects.create(**result)
-        sl.save()
-        return Response(result, status=status.HTTP_200_OK)
 
 
 class SettlementLogicApi(generics.ListAPIView):

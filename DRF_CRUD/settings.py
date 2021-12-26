@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-v+@0h%zz*x4#gmt22m5%2v1_h59d_b9jh@qhq9m0*vuv^wtj+k
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -74,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DRF_CRUD.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('SQL_ENGINE'),
@@ -86,9 +84,8 @@ DATABASES = {
         'CONN_MAX_AGE': None
     }
 }
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(default="postgres://postgres:postgres@localhost:5432/postgres")
 
+DATABASES['default'] = dj_database_url.config(default="postgres://postgres:postgres@localhost:5432/postgres")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -108,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -119,7 +115,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

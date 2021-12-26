@@ -6,8 +6,10 @@
  
  2. cd DRF_CRUD
  
- 3.  git clone https://github.com/TimofiiSorokin/DRF_CRUD.git
+ 3. git clone https://github.com/TimofiiSorokin/DRF_CRUD.git
 
  4. sudo docker-compose up
+
+ 5. docker-compose run web python3 manage.py migrate
  
 <b>Thanks for your attention!</b>
